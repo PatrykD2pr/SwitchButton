@@ -4,16 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
+import android.widget.TextView
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //przyciski
         val los = findViewById<Button>(R.id.los)
         val sort = findViewById<Button>(R.id.sort)
-        //switche
         val switch1 = findViewById<Switch>(R.id.sw1)
         val switch2 = findViewById<Switch>(R.id.sw2)
         val switch3 = findViewById<Switch>(R.id.sw3)
@@ -23,5 +24,35 @@ class MainActivity : AppCompatActivity() {
         val switch7 = findViewById<Switch>(R.id.sw7)
         val switch8 = findViewById<Switch>(R.id.sw8)
         val switch9 = findViewById<Switch>(R.id.sw9)
+        var liczby = findViewById<TextView>(R.id.textView)
+        val przyciski: ArrayList<Int> = ArrayList()
+        var index = 0
+                                                                                        //
+                                                                                        //
+        los.setOnClickListener {
+            przyciski.clear()
+            index = 0
+            liczby.text = ""
+            while (przyciski.size < 9) {
+                var losowa = Random.nextInt(1, 9)
+                przyciski.add(losowa)
+                liczby.text = liczby.text.toString() + przyciski[index].toString() + " "
+                index = index + 1
+            }
+        }
+        sort.setOnClickListener {
+            liczby.text = ""
+            for (i in 0 until 8)
+            {
+                if (przyciski[i] > przyciski[i+1])
+                {
+                    var x = przyciski[i]
+                    przyciski[i] = przyciski[i+1]
+                    przyciski[i+1] = x
+                }
+                liczby.text = liczby.text.toString() + przyciski[i].toString() + " "
+            }
+
+        }
     }
 }
