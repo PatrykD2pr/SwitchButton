@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
         var liczby = findViewById<TextView>(R.id.textView)
         val przyciski: ArrayList<Int> = ArrayList()
         var index = 0
-                                                                                        //
-                                                                                        //
+                                                                                        // 7 2 4 8 2 1 1 4 4
+                                                                                        // 1 1 2 2 4 4 4 7 8
         los.setOnClickListener {
             przyciski.clear()
             index = 0
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 liczby.text = liczby.text.toString() + przyciski[i].toString() + " "
             }
-
+            liczby.text = liczby.text.toString() + przyciski[8].toString()
         }
     }
 }
